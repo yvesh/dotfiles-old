@@ -1,0 +1,34 @@
+URxvt.saveLines: 2000
+URxvt.scrollBar: false
+URxvt.foreground: white
+URxvt.depth: 32
+URxvt.background: rgba:1111/1111/1111/dddd
+URxvt.secondaryScroll: true
+URxvt.font: xft:Bitstream Vera Sans Mono:pixelsize=17:antialias=true
+URxvt.perl-ext-common: default,matcher,selection-to-clipboard
+URxvt.urlLauncher: firefox
+URxvt.matcher.button: 1
+URxvt.tabbed.saveLines: 2000
+URxvt.tabbed.scrollBar: false
+URxvt.tabbed.secondaryScroll: true
+URxvt.tabbed.font: xft:Bitstream Vera Sans Mono:pixelsize=15
+! Other colors
+URxvt*color0: black
+URxvt*color1: red3
+URxvt*color2: green3
+URxvt*color3: yellow3
+URxvt*color4: blue2
+URxvt*color5: magenta3
+URxvt*color6: cyan3
+URxvt*color7: gray90
+URxvt*color8: grey50
+URxvt*color9: red
+URxvt*color10: green
+URxvt*color11: yellow
+URxvt*color12: blue
+URxvt*color13: magenta
+URxvt*color14: cyan
+URxvt*color15: white
+
+urxvt*transparent: true
+urxvt*shading: 50
