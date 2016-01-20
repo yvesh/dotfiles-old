@@ -1,34 +1,54 @@
 URxvt.saveLines: 2000
 URxvt.scrollBar: false
-URxvt.foreground: white
+URxvt.foreground: #f9f7f1
 URxvt.depth: 32
-URxvt.background: rgba:1111/1111/1111/dddd
 URxvt.secondaryScroll: true
-URxvt.font: xft:Bitstream Vera Sans Mono:pixelsize=17:antialias=true
+URxvt.font: xft:DejaVu Sans Mono for Powerline:pixelsize=22:antialias=true
 URxvt.perl-ext-common: default,matcher,selection-to-clipboard
-URxvt.urlLauncher: firefox
+URxvt.urlLauncher: chromium
 URxvt.matcher.button: 1
 URxvt.tabbed.saveLines: 2000
 URxvt.tabbed.scrollBar: false
 URxvt.tabbed.secondaryScroll: true
-URxvt.tabbed.font: xft:Bitstream Vera Sans Mono:pixelsize=15
-! Other colors
-URxvt*color0: black
-URxvt*color1: red3
-URxvt*color2: green3
-URxvt*color3: yellow3
-URxvt*color4: blue2
-URxvt*color5: magenta3
-URxvt*color6: cyan3
-URxvt*color7: gray90
-URxvt*color8: grey50
-URxvt*color9: red
-URxvt*color10: green
-URxvt*color11: yellow
-URxvt*color12: blue
-URxvt*color13: magenta
-URxvt*color14: cyan
-URxvt*color15: white
+URxvt.tabbed.font: xft:Bitstream Vera Sans Mono:pixelsize=20:antialias=true
+URxvt.intensityStyles: false
 
-urxvt*transparent: true
-urxvt*shading: 50
+!! black dark/light
+*color0: #073642
+*color8: #002b36
+
+!! red dark/light
+*color1: #dc322f
+*color9: #cb4b16
+
+!! green dark/light
+*color2: #859900
+*color10: #586e75
+
+!! yellow dark/light
+*color3: #b58900
+*color11: #657b83
+
+!! blue dark/light
+*color4: #268bd2
+*color12: #839496
+
+!! magenta dark/light
+*color5: #d33682
+*color13: #6c71c4
+
+!! cyan dark/light
+*color6: #2aa198
+*color14: #93a1a1
+
+!! white dark/light
+*color7: #eee8d5
+*color15: #fdf6e3
+
+URxvt.background: [80]#000000
+!! *transparent: true
+URxvt*inheritPixmap: true
+URxvt*.transparent: true
+URxvt*.shading: 30
+
+

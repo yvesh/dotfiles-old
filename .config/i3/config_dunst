@@ -1,5 +1,5 @@
 [global]
-font = Cousine 10
+font = Cousine 14
 format = "%a: %s %b"
 sort = yes
 indicate_hidden = yes
