@@ -126,11 +126,14 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# scrot & gimp - root
-bindsym Print exec scrot -e 'mv $f /home/g0ne/Dropbox/Dropbox/screenshots/$f'
+# Create screenshot with Maim
+bindsym Print exec maim --format=jpg /home/g0ne/Dropbox/Dropbox/screenshots/$(date +%F-%T).jpg
 
-# scrot & gimp - select window or rectangle
-bindsym --release $mod+Print exec scrot -s -e 'mv $f /home/g0ne/Dropbox/Dropbox/screenshots/$f'
+# Save screenshot with selection
+bindsym $mod+Print exec maim -s --format=jpg /home/g0ne/Dropbox/Dropbox/screenshots/$(date +%F-%T).jpg
+
+# maim - select window or rectangle
+# bindsym --release $mod+Print exec maim -i $(xdotool getactivewindow) --format=jpg /home/g0ne/Dropbox/Dropbox/screenshots/$(date +%F-%T).jpg
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
