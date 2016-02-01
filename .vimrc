@@ -4,7 +4,7 @@
 " 	info@yveshoppe.de
 "
 " Version:
-" 	1.1.2 - 2016/01/15
+" 	1.1.3 - 2016/02/01
 "
 """""""""""""""""""""""""""""""""""""""
 
@@ -80,5 +80,30 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
-
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+
+set runtimepath^=~/.vim/bundle/neobundle.vim/
+call neobundle#begin(expand('~/.vim/bundle/'))
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
+NeoBundle 'tomasr/molokai'
+
+call neobundle#end()
+filetype plugin indent on
+NeoBundleCheck
+
+" Integrate with powerline fonts
+let g:airline_powerline_fonts = 1
+
+" Molokai
+let g:molokai_original = 1
+
+" Display status bar
+set laststatus=2
+
+" colorscheme molokai
+" let g:airline_theme='solarized'
