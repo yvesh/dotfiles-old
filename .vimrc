@@ -4,7 +4,7 @@
 " 	info@yveshoppe.de
 "
 " Version:
-" 	1.1.3 - 2016/02/01
+" 	1.1.4 - 2016/02/05
 "
 """""""""""""""""""""""""""""""""""""""
 
@@ -91,6 +91,8 @@ NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'tomasr/molokai'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'crusoexia/vim-javascript-lib'
 
 call neobundle#end()
 filetype plugin indent on
@@ -100,10 +102,11 @@ NeoBundleCheck
 let g:airline_powerline_fonts = 1
 
 " Molokai
-let g:molokai_original = 1
+colorscheme molokai
+let g:molokai_original = 1 
 
 " Display status bar
 set laststatus=2
 
-" colorscheme molokai
-" let g:airline_theme='solarized'
+" Hightlighting JS / DO JS / DOMM
+let g:javascript_enable_domhtmlcss = 1
