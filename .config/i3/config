@@ -36,8 +36,10 @@ bindsym $mod+Return exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+# start rofi (a program launcher)
+bindsym $mod+d exec rofi -show run -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85
+bindsym $mod+s exec rofi -show ssh -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85
+bindsym $mod+a exec rofi -show window -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -164,22 +166,37 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    status_command i3status
+    status_command $HOME/.config/i3/conky
+    
     tray_output primary
     font pango:monospace 8
+	colors {
+        background #181b20
+        statusline #9b9081
+        separator #252525
+ 
+        # Colors           border  backgr. text
+        focused_workspace  #141414 #CCCCCC #333333
+        active_workspace   #141414 #181b20 #746C48
+        inactive_workspace #141414 #181b20 #444444
+        urgent_workspace   #141414 #181b20 #8c644c
+    }
 }
 
 # XKB
 exec --no-startup-id setxkbmap de
 
 # Scaling
-exec --no-startup-id xrandr --dpi 150
+exec --no-startup-id xrandr --dpi 170
+
+# Positioning
+exec --no-startup-id xrandr --output DP-4 --auto --right-of DP-2
 
 # No XDMS
 exec xset -dpms
 
 # Start bg
-exec --no-startup-id feh --bg-fill ~/Dropbox/Dropbox/home/Pictures/Backgrounds/dreams.jpg
+exec --no-startup-id feh --bg-fill ~/Dropbox/Dropbox/home/Pictures/Backgrounds/arch-linux-wallpaper-ic8ubjf.png
 
 # clipit
 exec --no-startup-id clipit -d
