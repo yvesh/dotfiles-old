@@ -49,13 +49,13 @@ ZSH_THEME="bullet-train"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git nmap sublime docker systemadmin web-search ssh-agent)
+plugins=(git nmap sublime docker systemadmin web-search)
 
 # User configuration
 
-export 
-PATH="~/.subuser/bin:~/bin:~/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
+export PATH="$HOME/.composer/vendor/bin:$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
+export EDITOR=vim
 
 source $ZSH/oh-my-zsh.sh
 
@@ -68,8 +68,6 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
-
-export EDITOR=vim
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -86,7 +84,56 @@ export EDITOR=vim
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-zstyle :omz:plugins:ssh-agent agent-forwarding on
+alias cdmat='cd $HOME/projects/compojoom/Matukio'
 
-alias nano="vim"
-alias vi="vim"
+export XDEBUG_CONFIG="remote_enable=1 remote_mode=req remote_port=9000 remote_host=127.0.0.1"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Antigen
+source antigen/antigen.zsh
+
+antigen use oh-my-zsh
+
+local b="antigen-bundle"
+
+$b command-not-found
+
+# Helper for extracting different types of archives.
+$b extract
+
+# atom editor
+# $b atom
+
+# homebrew  - autocomplete on `brew install`
+$b brew
+$b brew-cask
+
+$b git
+$b lein
+
+$b colorize 
+
+# $b zsh-travis
+# $b zsh-osx
+
+# Tracks your most used directories, based on 'frecency'.
+$b zsh-users/zsh-syntax-highlighting
+
+# history search
+$b zsh-users/zsh-history-substring-search ./zsh-history-substring-search.zsh
+
+# suggestions
+$b tarruda/zsh-autosuggestions
+
+# colors for all files!
+$b trapd00r/zsh-syntax-highlighting-filetypes
+
+# # dont set a theme, because pure does it all
+$b mafredri/zsh-async
+# $b sindresorhus/pure
+#
+antigen theme bullet-train
+
+antigen apply
+
