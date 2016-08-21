@@ -52,9 +52,8 @@ ZSH_THEME="bullet-train"
 plugins=(git nmap sublime docker systemadmin web-search)
 
 # User configuration
+export PATH="$HOME/.config/composer/vendor/bin:$HOME/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
-export PATH="$HOME/.composer/vendor/bin:$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-# export MANPATH="/usr/local/man:$MANPATH"
 export EDITOR=vim
 
 source $ZSH/oh-my-zsh.sh
@@ -86,9 +85,8 @@ source $ZSH/oh-my-zsh.sh
 
 alias cdmat='cd $HOME/projects/compojoom/Matukio'
 
+# Xdebug remote
 export XDEBUG_CONFIG="remote_enable=1 remote_mode=req remote_port=9000 remote_host=127.0.0.1"
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Antigen
 source antigen/antigen.zsh
