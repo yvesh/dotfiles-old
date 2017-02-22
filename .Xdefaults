@@ -3,14 +3,14 @@ URxvt.scrollBar: false
 URxvt.foreground: #f9f7f1
 URxvt.depth: 32
 URxvt.secondaryScroll: true
-URxvt.font: xft:DejaVu Sans Mono for Powerline:pixelsize=22:antialias=true
+URxvt.font: xft:DejaVu Sans Mono for Powerline:pixelsize=20:antialias=true
 URxvt.perl-ext-common: default,matcher,selection-to-clipboard
 URxvt.urlLauncher: chromium
 URxvt.matcher.button: 1
 URxvt.tabbed.saveLines: 2000
 URxvt.tabbed.scrollBar: false
 URxvt.tabbed.secondaryScroll: true
-URxvt.tabbed.font: xft:Bitstream Vera Sans Mono:pixelsize=20:antialias=true
+URxvt.tabbed.font: xft:Bitstream Vera Sans Mono:pixelsize=30:antialias=true
 URxvt.intensityStyles: false
 
 !! black dark/light

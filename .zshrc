@@ -56,6 +56,8 @@ export PATH="$HOME/.config/composer/vendor/bin:$HOME/.bin:/usr/local/bin:/usr/bi
 
 export EDITOR=vim
 
+export XDG_CURRENT_DESKTOP=kde
+
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
@@ -134,4 +136,6 @@ $b mafredri/zsh-async
 antigen theme bullet-train
 
 antigen apply
+
+antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
 

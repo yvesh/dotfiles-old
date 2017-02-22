@@ -1,4 +1,4 @@
-# i3 config - v2016-08-18
+# i3 config - v2017-02-22
 # 
 # Maintainer:
 #   Yves Hoppe <info@yveshoppe.de>
@@ -31,13 +31,13 @@ client.focused_inactive  #663300 #663300 #888888 #663300
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec rxvt-unicode
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
-bindsym $mod+d exec rofi -show run -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85
+bindsym $mod+d exec zsh -c "rofi -show drun" # -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85
 bindsym $mod+s exec rofi -show ssh -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85
 bindsym $mod+a exec rofi -show window -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85 
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -79,7 +79,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+# bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -129,13 +129,13 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Create screenshot with Maim
-bindsym Print exec maim --format=jpg /home/yves/Dropbox/screenshots/$(date +%F-%T).jpg
+bindsym Print exec maim ~/Dropbox/Screenshots/$(date +%F-%T).png
 
 # Save screenshot with selection
-bindsym $mod+Print exec maim -s --format=jpg /home/yves/Dropbox/screenshots/$(date +%F-%T).jpg
+bindsym $mod+Print exec maim -s ~/Dropbox/Screenshots/$(date +%F-%T).png
 
 # maim - select window or rectangle
-# bindsym --release $mod+Print exec maim -i $(xdotool getactivewindow) --format=jpg /home/g0ne/Dropbox/Dropbox/screenshots/$(date +%F-%T).jpg
+# bindsym --release $mod+Print exec maim -i $(xdotool getactivewindow) --format=jpg ~/Dropbox/screenshots/$(date +%F-%T).jpg
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -166,14 +166,14 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    status_command i3status
+    status_command i3blocks
     
    # tray_output primary
-    font pango:monospace 8
+    font pango:monospace 22 
 	colors {
-        background #181b20
+        background #000
         statusline #9b9081
-        separator #252525
+        separator #ccc
  
         # Colors           border  backgr. text
         focused_workspace  #141414 #CCCCCC #333333
@@ -183,38 +183,45 @@ bar {
     }
 }
 
+# Positioning monitors
+exec --no-startup-id bash ~/rotate_24.sh
+
+# Compton
+exec --no-startup-id compton -b --backend glx --glx-no-stencil glx-no-rebind-mapping --glx-swap-method exchange
+
 # XKB
 exec --no-startup-id setxkbmap de
 
-# Scaling
-exec --no-startup-id xrandr --dpi 150
+# Scaling for none dock
+# exec --no-startup-id xrandr --dpi 150
 
-# Positioning
-##exec --no-startup-id xrandr --output DP-4 --auto --right-of DP-2
-
-# No XDMS
+# No XDMS for doc
 exec xset -dpms
 
 # Gnome settings daemon
-exec --no-startup-id /usr/libexec/gnome-settings-daemon
+exec --no-startup-id /usr/bin/gnome-settings-daemon
 
 # Start bg
-exec --no-startup-id feh --bg-fill ~/Dropbox/home/Pictures/Backgrounds/flying.jpg
+exec --no-startup-id feh --bg-fill ~/Dropbox/home/Pictures/backgrounds4k/pain2.png
 
 # clipit
-exec --no-startup-id clipit -d
+# exec --no-startup-id clipit -d
 
 # Notifications
 exec --no-startup-id dunst -config ~/.config/i3/config_dunst
 
 # uxrvt
-# exec --no-startup-id uxrvtd -q -f -o
+exec --no-startup-id uxrvtd -q -f -o
 
 # Dropbox
-exec --no-startup-id /usr/bin/dropbox
+exec --no-startup-id /usr/bin/dropbox start
 
 # Rescue time
-# exec --no-startup-id /usr/bin/rescuetime
+exec --no-startup-id /usr/bin/rescuetime
 
 # Gnome
 exec --no-startup-id gnome-keyring-daemon --start
+
+# Network Manager
+exec --no-startup-id nm-applet
+
