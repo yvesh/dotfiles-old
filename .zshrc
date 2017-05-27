@@ -56,8 +56,10 @@ export PATH="$HOME/.config/composer/vendor/bin:$HOME/.bin:/usr/local/bin:/usr/bi
 
 export EDITOR=vim
 
+# Hack for some applications
 export XDG_CURRENT_DESKTOP=kde
 
+# Overwriten later
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
@@ -86,6 +88,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias cdmat='cd $HOME/projects/compojoom/Matukio'
+alias cdjom='cd $HOME/projects/yvesh/joomla-cms'
+alias cdjom4='cd $HOME/projects/yvesh/joomla4'
+alias cddev='cd $HOME/srv/dev'
 
 # Xdebug remote
 export XDEBUG_CONFIG="remote_enable=1 remote_mode=req remote_port=9000 remote_host=127.0.0.1"
@@ -103,14 +108,15 @@ $b command-not-found
 $b extract
 
 # atom editor
-# $b atom
+$b atom
 
-# homebrew  - autocomplete on `brew install`
-$b brew
-$b brew-cask
+# homebrew  - autocomplete on `brew install` -- Mac only
+# $b brew
+# $b brew-cask
 
 $b git
 $b lein
+$b pip
 
 $b colorize 
 
@@ -129,13 +135,11 @@ $b tarruda/zsh-autosuggestions
 # colors for all files!
 $b trapd00r/zsh-syntax-highlighting-filetypes
 
-# # dont set a theme, because pure does it all
 $b mafredri/zsh-async
-# $b sindresorhus/pure
-#
+
+# Set theme
 antigen theme bullet-train
 
 antigen apply
 
 antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
-

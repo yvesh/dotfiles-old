@@ -3,52 +3,42 @@ URxvt.scrollBar: false
 URxvt.foreground: #f9f7f1
 URxvt.depth: 32
 URxvt.secondaryScroll: true
-URxvt.font: xft:DejaVu Sans Mono for Powerline:pixelsize=20:antialias=true
+URxvt.font: xft:DejaVu Sans Mono for Powerline:pixelsize=16:antialias=true
 URxvt.perl-ext-common: default,matcher,selection-to-clipboard
 URxvt.urlLauncher: chromium
 URxvt.matcher.button: 1
 URxvt.tabbed.saveLines: 2000
 URxvt.tabbed.scrollBar: false
 URxvt.tabbed.secondaryScroll: true
-URxvt.tabbed.font: xft:Bitstream Vera Sans Mono:pixelsize=30:antialias=true
+URxvt.tabbed.font: xft:Bitstream Vera Sans Mono:pixelsize=20:antialias=true
 URxvt.intensityStyles: false
 
-!! black dark/light
-*color0: #073642
-*color8: #002b36
+!! Monokai theme
+URxvt*color0: #101010
+URxvt*color1: #960050
+URxvt*color2: #66aa11
+URxvt*color3: #c47f2c
+URxvt*color4: #30309b
+URxvt*color5: #7e40a5
+URxvt*color6: #3579a8
+URxvt*color7: #9999aa
+URxvt*color8: #303030
+URxvt*color9: #ff0090
+URxvt*color10: #80ff00
+URxvt*color11: #ffba68
+URxvt*color12: #5f5fee
+URxvt*color13: #bb88dd
+URxvt*color14: #4eb4fa
+URxvt*color15: #d0d0d0
 
-!! red dark/light
-*color1: #dc322f
-*color9: #cb4b16
-
-!! green dark/light
-*color2: #859900
-*color10: #586e75
-
-!! yellow dark/light
-*color3: #b58900
-*color11: #657b83
-
-!! blue dark/light
-*color4: #268bd2
-*color12: #839496
-
-!! magenta dark/light
-*color5: #d33682
-*color13: #6c71c4
-
-!! cyan dark/light
-*color6: #2aa198
-*color14: #93a1a1
-
-!! white dark/light
-*color7: #eee8d5
-*color15: #fdf6e3
-
-URxvt.background: [80]#000000
+!! Real transparency
+!! URxvt*depth: 32
+!! URxvt.background: [80]#000000
+!! URxvt*background: rgba:0000/0000/0200/c800
 !! *transparent: true
-URxvt*inheritPixmap: true
-URxvt*.transparent: true
-URxvt*.shading: 30
+!! URxvt*.inheritPixmap: true
 
+!! Fake transparency
+URxvt*.transparent: true
+URxvt*.shading: 20
 

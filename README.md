@@ -4,14 +4,15 @@ Copy the files into your home folder.
 
 ####Config files / Used software:
 
-*i3 window manager
+*i3-gaps window manager
 *URxvt (terminal + daemon)
-*Zsh + Oh My ZSH
+*Zsh + Antigen
 *Bullet-Train zsh theme
+*Molokai colors
 *dunst (notifications)
-*autosel (clipboard)
+*Bumblebee status
 *i3lock
-*i3lock-fancy
+*i3lock-fancy (with customizations)
 *vim
 
 ###My environment
@@ -19,12 +20,13 @@ Copy the files into your home folder.
 $ screenfetch -n
 
 * OS: Arch Linux 
-* Kernel: x86_64 Linux 4.3.3-2-ARCH
+* Kernel: x86_64 Linux 4.10.0-21-ARCH
+* Uptime: 3d 9h 46m
 * Shell: zsh 5.2
-* Resolution: 7680x2160
+* Resolution: 4920x2160
 * WM: i3
 * Arc-Dark
-* CPU: Intel Core i7-5820K CPU @ 3.6GHz
-* GPU: GeForce GTX 980 Ti
-* RAM: 10067MiB / 44171MiB
+* CPU: Intel Core i7-7820HQ CPU @ 3.9GHz
+* GPU: Quardro M2200
+* RAM: 10067MiB / 63948MiB
 
