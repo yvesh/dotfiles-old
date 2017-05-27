@@ -112,28 +112,28 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # switch to workspace
-bindsym $mod+1 workspace number 1 dash
-bindsym $mod+2 workspace number 2 www
-bindsym $mod+3 workspace number 3 dev
-bindsym $mod+4 workspace number 4 sql
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace 1:dash
+bindsym $mod+2 workspace 2:www
+bindsym $mod+3 workspace 3:dev
+bindsym $mod+4 workspace 4:sql
+bindsym $mod+5 workspace 5:mail
+bindsym $mod+6 workspace 6:vmw
+bindsym $mod+7 workspace 7:q
+bindsym $mod+8 workspace 8:w
+bindsym $mod+9 workspace 9:e
+bindsym $mod+0 workspace 10:r
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number 1 dash
-bindsym $mod+Shift+2 move container to workspace number 2 www
-bindsym $mod+Shift+3 move container to workspace number 3 dev
-bindsym $mod+Shift+4 move container to workspace number 4 sql
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace 1:dash
+bindsym $mod+Shift+2 move container to workspace 2:www
+bindsym $mod+Shift+3 move container to workspace 3:dev
+bindsym $mod+Shift+4 move container to workspace 4:sql
+bindsym $mod+Shift+5 move container to workspace 5:mail
+bindsym $mod+Shift+6 move container to workspace 6:vmw
+bindsym $mod+Shift+7 move container to workspace 7:q
+bindsym $mod+Shift+8 move container to workspace 8:w
+bindsym $mod+Shift+9 move container to workspace 9:e
+bindsym $mod+Shift+0 move container to workspace 10:r
 
 assign [class="Chrome"] 2 www
 
@@ -162,10 +162,11 @@ mode "resize" {
 # finds out, if available)
 bar {
     # Bumblee status dev
-    status_command ~/projects/yvesh/bumblebee-status/bumblebee-status -m spotify nic disk:home github xrandr cpu sensors memory pasink pasource weather date time battery -p interval=5 github.token=3629d16d72e41eda8e67e62d1d02fe438fe5a3df time.format="%H:%M" date.format="%a, %b %d %Y" home.path=/ disk.left-click="dolphin {instance}" traffic.exclude=lo,vmnet1,vmnet8,lxcbr0,docker0 nic.exclude=lo,docker,vmnet,lxcbr -t solarized-powerline
+    status_command ~/projects/yvesh/bumblebee-status/bumblebee-status -m spotify nic disk:home github xrandr cpu sensors memory pasink pasource weather date time battery -p interval=5 github.token=REPLACE time.format="%H:%M" date.format="%a, %b %d %Y" home.path=/ disk.left-click="dolphin {instance}" traffic.exclude=lo,vmnet1,vmnet8,lxcbr0,docker0 nic.exclude=lo,docker,vmnet,lxcbr -t solarized-powerline
     
     # tray_output primary
     font pango:DejaVu Sans Mono for Powerline 12 
+    strip_workspace_numbers yes
 
     # Overwritten by theme, fallback
 	colors {
