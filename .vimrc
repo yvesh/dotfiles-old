@@ -93,6 +93,11 @@ NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'crusoexia/vim-javascript-lib'
+NeoBundle 'morhetz/gruvbox'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'vim-syntastic/syntastic'
+
 
 call neobundle#end()
 filetype plugin indent on
@@ -101,12 +106,43 @@ NeoBundleCheck
 " Integrate with powerline fonts
 let g:airline_powerline_fonts = 1
 
-" Molokai
-colorscheme molokai
-let g:molokai_original = 1 
+set t_Co=256
+let g:gruvbox_italic=1
+colorscheme gruvbox
+set background=dark
+set cursorline
+set number
+set laststatus=2
+set showcmd
+set showtabline=1
+
+" Searching
+set ignorecase
+
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_ | diffthis
+                 \ | wincmd p | diffthis
+endif
 
 " Display status bar
 set laststatus=2
 
 " Hightlighting JS / DO JS / DOMM
 let g:javascript_enable_domhtmlcss = 1
+
+" nerdtree
+map <C-n> :NERDTreeToggle<CR>
+
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Load matchit.vim, but only if the user hasn't installed a newer version.
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+	runtime! macros/matchit.vim
+endif

@@ -1,4 +1,4 @@
-# i3-gaps config - v2017-05-27
+# i3-gaps config - v2017-09-01
 # 
 # Maintainer:
 #   Yves Hoppe <info@yveshoppe.de>
@@ -27,10 +27,21 @@ workspace 3 gaps inner 0
 smart_gaps on
 
 # Workspace names
-rename workspace 1 to "1 dash"
-rename workspace 2 to "2 web"
-rename workspace 3 to "3 dev"
-rename workspace 4 to "4 sql"
+set $ws1 "1:dash "
+set $ws2 "2:web "
+set $ws3 "3:dev "
+set $ws4 "4:sql "
+set $ws5 "5:mail "
+set $ws6 "6:vmw "
+set $ws7 "7:a "
+set $ws8 "8:b "
+set $ws9 "9:c "
+
+
+rename workspace 1 to $ws1
+rename workspace 2 to $ws2
+rename workspace 3 to $ws3
+rename workspace 4 to $ws4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -47,7 +58,7 @@ rename workspace 4 to "4 sql"
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec rxvt-unicode
+bindsym $mod+Return exec i3-sensible-terminal # rxvt-unicode
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -112,28 +123,28 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1:dash
-bindsym $mod+2 workspace 2:www
-bindsym $mod+3 workspace 3:dev
-bindsym $mod+4 workspace 4:sql
-bindsym $mod+5 workspace 5:mail
-bindsym $mod+6 workspace 6:vmw
-bindsym $mod+7 workspace 7:q
-bindsym $mod+8 workspace 8:w
-bindsym $mod+9 workspace 9:e
-bindsym $mod+0 workspace 10:r
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace 0
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1:dash
-bindsym $mod+Shift+2 move container to workspace 2:www
-bindsym $mod+Shift+3 move container to workspace 3:dev
-bindsym $mod+Shift+4 move container to workspace 4:sql
-bindsym $mod+Shift+5 move container to workspace 5:mail
-bindsym $mod+Shift+6 move container to workspace 6:vmw
-bindsym $mod+Shift+7 move container to workspace 7:q
-bindsym $mod+Shift+8 move container to workspace 8:w
-bindsym $mod+Shift+9 move container to workspace 9:e
-bindsym $mod+Shift+0 move container to workspace 10:r
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace 0
 
 assign [class="Chrome"] 2 www
 
@@ -147,10 +158,10 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Create screenshot with Maim
-bindsym Print exec maim ~/Dropbox/Screenshots/$(date +%F-%T).png
+bindsym Print exec maim ~/Dropbox/Screenshots/$(date +%F-%T).jpg
 
 # Save screenshot with Maim and selection tool
-bindsym $mod+Print exec maim -s ~/Dropbox/Screenshots/$(date +%F-%T).png
+bindsym $mod+Print exec maim -s ~/Dropbox/Screenshots/$(date +%F-%T).jpg
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -162,7 +173,7 @@ mode "resize" {
 # finds out, if available)
 bar {
     # Bumblee status dev
-    status_command ~/projects/yvesh/bumblebee-status/bumblebee-status -m spotify nic disk:home github xrandr cpu sensors memory pasink pasource weather date time battery -p interval=5 github.token=REPLACE time.format="%H:%M" date.format="%a, %b %d %Y" home.path=/ disk.left-click="dolphin {instance}" traffic.exclude=lo,vmnet1,vmnet8,lxcbr0,docker0 nic.exclude=lo,docker,vmnet,lxcbr -t solarized-powerline
+    status_command ~/projects/yvesh/bumblebee-status/bumblebee-status -m nvidiagpu spotify nic traffic xrandr cpu sensors memory pasink pasource weather date time battery -p interval=8 github.token=INSERT time.format="%H:%M" date.format="%a, %b %d %Y" home.path=/ disk.left-click="nautilus {instance}" traffic.exclude=lo,vmnet1,vmnet8,lxcbr0,docker0,vboxnet,veth,wlp,wwp nic.exclude=lo,docker,vmnet,lxcbr,wwp0s,vboxnet,veth,br -t solarized-powerline
     
     # tray_output primary
     font pango:DejaVu Sans Mono for Powerline 12 
@@ -190,9 +201,6 @@ bar {
 
 # XKB
 exec --no-startup-id setxkbmap de
-
-# Scaling for none dock
-# exec --no-startup-id xrandr --dpi 150
 
 # No XDMS for dock
 exec xset -dpms
@@ -231,3 +239,8 @@ exec --no-startup-id nm-applet
 
 # Skype
 # exec --no-startup-id skype
+# Scaling for none dock
+exec --no-startup-id xrandr --dpi 96
+
+exec --no-startup-id feh --bg-fill ~/Dropbox/home/Pictures/backgrounds4k/shapes.jpg
+
