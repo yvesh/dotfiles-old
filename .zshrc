@@ -1,11 +1,13 @@
+# Version 2017-12-17
+
 # Path to your oh-my-zsh installation.
-export ZSH=~/.oh-my-zsh
+# export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="bullet-train"
+# ZSH_THEME="bullet-train"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -52,15 +54,20 @@ ZSH_THEME="bullet-train"
 plugins=(git nmap sublime docker systemadmin web-search)
 
 # User configuration
-export PATH="$HOME/.config/composer/vendor/bin:$HOME/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$HOME/.config/composer/vendor/bin:$HOME/.bin:$PATH"
 
 export EDITOR=vim
 
-# Hack for some applications
-export XDG_CURRENT_DESKTOP=kde
+# export XDG_CURRENT_DESKTOP=kde dolphin
 
-# Overwriten later
-source $ZSH/oh-my-zsh.sh
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent > ~/.ssh-agent-thing
+fi
+if [[ "$SSH_AGENT_PID" == "" ]]; then
+    eval "$(<~/.ssh-agent-thing)"
+fi
+
+# source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -88,58 +95,70 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias cdmat='cd $HOME/projects/compojoom/Matukio'
-alias cdjom='cd $HOME/projects/yvesh/joomla-cms'
-alias cdjom4='cd $HOME/projects/yvesh/joomla4'
-alias cddev='cd $HOME/srv/dev'
 
 # Xdebug remote
 export XDEBUG_CONFIG="remote_enable=1 remote_mode=req remote_port=9000 remote_host=127.0.0.1"
 
 # Antigen
-source antigen/antigen.zsh
+source /Users/yveshoppe/antigen.zsh
 
 antigen use oh-my-zsh
 
-local b="antigen-bundle"
-
-$b command-not-found
+antigen bundle command-not-found
 
 # Helper for extracting different types of archives.
-$b extract
+antigen bundle extract
 
 # atom editor
-$b atom
+# $b atom
 
-# homebrew  - autocomplete on `brew install` -- Mac only
-# $b brew
-# $b brew-cask
+# homebrew  - autocomplete on `brew install`
+antigen bundle brew
+antigen bundle brew-cask
 
-$b git
-$b lein
-$b pip
+antigen bundle git
+antigen bundle lein
 
-$b colorize 
+antigen bundle colorize 
+
+# Other oh my zsh plugins
+antigen bundle osx
+antigen bundle nmap
+antigen bundle web-search
+antigen bundle encode64
+antigen bundle cp
+antigen bundle colored-man-pages
+antigen bundle sublime
+anitgen bundle php
+antigen bundle laravel
+antigen bundle composer
+antigen bundle python
+
 
 # $b zsh-travis
-# $b zsh-osx
+antigen bundle zsh-osx
 
 # Tracks your most used directories, based on 'frecency'.
-$b zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-syntax-highlighting
 
 # history search
-$b zsh-users/zsh-history-substring-search ./zsh-history-substring-search.zsh
+antigen bundle zsh-users/zsh-history-substring-search ./zsh-history-substring-search.zsh
 
 # suggestions
-$b tarruda/zsh-autosuggestions
+antigen bundle tarruda/zsh-autosuggestions
 
 # colors for all files!
-$b trapd00r/zsh-syntax-highlighting-filetypes
+antigen bundle trapd00r/zsh-syntax-highlighting-filetypes
 
-$b mafredri/zsh-async
+# # dont set a theme, because pure does it all
+antigen bundle mafredri/zsh-async
+# $b sindresorhus/pure
+#
+#antigen theme caiogondim/bullet-train
 
-# Set theme
-antigen theme bullet-train
+antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
 
 antigen apply
 
 antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
+
