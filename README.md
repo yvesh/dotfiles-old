@@ -2,7 +2,7 @@
 
 Copy the files into your home folder. 
 
-###Config files / Used software:
+### Config files / Used software:
 
 * i3-gaps
 * URxvt (terminal + daemon)
