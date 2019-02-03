@@ -4,7 +4,7 @@
 " 	info@yveshoppe.de
 "
 " Version:
-" 	1.1.4 - 2016/02/05
+" 	2.0.1 - 2019/02/03
 "
 """""""""""""""""""""""""""""""""""""""
 
@@ -82,26 +82,42 @@ set wrap "Wrap lines
 
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
-set runtimepath^=~/.vim/bundle/neobundle.vim/
-call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
+if &compatible
+  set nocompatible
+endif
 
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'flazz/vim-colorschemes'
-NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
-NeoBundle 'tomasr/molokai'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'crusoexia/vim-javascript-lib'
-NeoBundle 'morhetz/gruvbox'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'vim-syntastic/syntastic'
+" Add the dein installation directory into runtimepath
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
+if dein#load_state('~/.cache/dein')
+  call dein#begin('~/.cache/dein')
 
-call neobundle#end()
+  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('Shougo/deoplete.nvim')
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
+
+  call dein#add('tpope/vim-fugitive')
+  call dein#add('flazz/vim-colorschemes')
+  call dein#add('vim-airline/vim-airline')
+  call dein#add('vim-airline/vim-airline-themes')
+  call dein#add('tomasr/molokai')
+  call dein#add('pangloss/vim-javascript')
+  call dein#add('crusoexia/vim-javascript-lib')
+  call dein#add('morhetz/gruvbox')
+  call dein#add('tpope/vim-fugitive')
+  call dein#add('scrooloose/nerdtree')
+  call dein#add('vim-syntastic/syntastic')
+  call dein#add('chrisbra/Colorizer')
+  call dein#add('ervandew/supertab')
+
+  call dein#end()
+  call dein#save_state()
+endif
+
 filetype plugin indent on
-NeoBundleCheck
 
 " Integrate with powerline fonts
 let g:airline_powerline_fonts = 1
@@ -146,3 +162,6 @@ let g:syntastic_check_on_wq = 0
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
 	runtime! macros/matchit.vim
 endif
+
+:let g:colorizer_auto_color = 1
+

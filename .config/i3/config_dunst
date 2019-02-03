@@ -1,5 +1,5 @@
 [global]
-font = Cousine 14
+font = RobotoMono 14
 format = "%a: %s %b"
 sort = yes
 indicate_hidden = yes
@@ -16,25 +16,38 @@ sticky_history = yes
 line_height = 0
 separator_height = 2;
 separator_color = auto
-padding = 1
+padding = 8
 horizontal_padding = 9
+
+#Frame
+frame_width = 0
+
+#icons
+icon_position = left
+icon_path = /usr/share/icons/Arc/status/32@2x:/usr/share/icons/Arc/devices/32@2x
+max_icon_size = 32
+
 [shortcuts]
 close = mod4+x
 close_all = mod4+ctrl+x
 history = mod4+grave
-[urgency_low]
-background = "#404040"
-foreground = "#CCCCCC"
-timeout = 10
-[urgency_normal]
-background = "#859900"
-foreground = "#DDDDDD"
-timeout = 10
-[urgency_critical]
-background = "#dc322f"
-foreground = "#DDDDDD"
-timeout = 0
+
 [ignore]
 appname = "Spotify"
 summary = "*"
 format = ""
+
+[urgency_critical]
+    background = "#9C3528"
+    timeout = 0
+    foreground = "#F3F4F5"
+
+[urgency_normal]
+    background = "#2F343F"
+    timeout = 10
+    foreground = "#F3F4F5"
+
+[urgency_low]
+    background = "#0D68A8"
+    timeout = 5
+    foreground = "#F3F4F5"
