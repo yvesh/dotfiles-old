@@ -1,0 +1,45 @@
+x11-apps/xdpyinfo dmx xinerama dga
+# required by www-client/firefox-65.0.2::gentoo
+# required by firefox (argument)
+>=media-libs/libpng-1.6.36 apng
+# required by www-client/firefox-65.0.2::gentoo[system-libvpx]
+# required by firefox (argument)
+>=media-libs/libvpx-1.8.0-r1 postproc
+# required by www-client/firefox-65.0.2::gentoo[system-sqlite]
+# required by firefox (argument)
+>=dev-db/sqlite-3.27.2 secure-delete
+# required by www-client/firefox-65.0.2::gentoo[pgo]
+# required by firefox (argument)
+>=x11-base/xorg-server-1.20.4 xvfb
+# required by www-client/firefox-65.0.2::gentoo[system-libvpx]
+# required by firefox (argument)
+>=media-libs/libvpx-1.7.0 postproc
+# required by app-emulation/vmware-workstation-15.0.2.10952284-r3::stefantalpalaru
+# required by app-emulation/vmware-modules-330.0.2-r1::stefantalpalaru
+>=media-plugins/alsa-plugins-1.1.8 speex
+# required by gnome-base/gnome-keyring-3.28.2::gentoo
+# required by app-crypt/libsecret-0.18.7::gentoo
+>=app-crypt/pinentry-1.1.0-r3 gnome-keyring
+# required by app-misc/neofetch-6.0.0::gentoo[X]
+# required by neofetch (argument)
+>=www-client/w3m-0.5.3_p20190105 imlib
+# required by media-video/peek-1.3.1-r2::gentoo
+# required by peek (argument)
+>=media-video/ffmpeg-4.1.1 vpx
+# required by media-video/shotcut-19.01.24::gentoo
+# required by shotcut (argument)
+>=media-libs/mlt-6.12.0-r1 ffmpeg xml qt5 frei0r sdl
+# required by media-libs/mlt-6.12.0-r1::gentoo[sdl]
+# required by media-video/shotcut-19.01.24::gentoo
+# required by shotcut (argument)
+>=media-libs/libsdl2-2.0.9 opengl
+# required by net-wireless/bluez-5.50-r1::gentoo
+# required by @selected
+# required by @world (argument)
+>=sys-apps/dbus-1.12.12-r1 user-session
+# required by sys-auth/polkit-0.115-r3::gentoo[systemd]
+# required by gnome-extra/polkit-gnome-0.105-r1::gentoo
+>=sys-apps/systemd-241-r1 policykit
+# required by media-sound/pulseaudio-modules-bt-9999::gentoo
+# required by media-sound/pulseaudio-modules-bt (argument)
+>=media-sound/pulseaudio-12.2 -bluetooth

@@ -1,5 +1,5 @@
-# i3-gaps config - v2018-01-28
-# 
+# i3-gaps config - v2018-03-18
+#  
 # Maintainer:
 #   Yves Hoppe <info@yveshoppe.de>
 
@@ -29,8 +29,7 @@ workspace 3 gaps inner 0
 # 
 smart_gaps on
 
-# Workspace names (requires fontawesome)
-
+# Workspace names (With fontawesome)
 # Dashboard
 set $ws1 "1:  "
 # Web
@@ -39,13 +38,13 @@ set $ws2 "2:  "
 set $ws3 "3:  "
 # SQL
 set $ws4 "4:  "
-# Web 2
+# Mail
 set $ws5 "5:  "
-# Dev Web
+# vmware
 set $ws6 "6: "
-# Vmware
+# spotify
 set $ws7 "7:  "
-# Third display
+# vlc
 set $ws8 "8:  "
 # Trash
 set $ws9 "9:  "
@@ -54,6 +53,11 @@ rename workspace 1 to $ws1
 rename workspace 2 to $ws2
 rename workspace 3 to $ws3
 rename workspace 4 to $ws4
+rename workspace 5 to $ws5
+rename workspace 6 to $ws6
+rename workspace 7 to $ws7
+rename workspace 8 to $ws8
+rename workspace 9 to $ws9
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -70,7 +74,7 @@ rename workspace 4 to $ws4
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal # rxvt-unicode
+bindsym $mod+Return exec alacritty # rxvt-unicode
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -87,7 +91,7 @@ bindsym $mod+a exec rofi -show window -fg "#505050" -bg "#000000" -hlfg "#ffb964
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
-bindsym $mod+l focus up
+# bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
@@ -99,7 +103,7 @@ bindsym $mod+Right focus right
 # move focused window
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
+# bindsym $mod+Shift+l move up
 bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
@@ -175,6 +179,9 @@ bindsym Print exec maim ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
 # Save screenshot with Maim and selection tool
 bindsym $mod+Print exec maim -s ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
 
+# Lock the system
+bindsym $mod+l exec i3lock-fancy
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
 }
@@ -185,7 +192,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
     # Bumblee status dev
-    status_command ~/projects/yvesh/bumblebee-status/bumblebee-status -m spotify nic traffic xrandr cpu sensors memory pasink pasource weather date time battery -p interval=8 github.token=TOKEN_GOES_HERE time.format="%H:%M" date.format="%a, %b %d %Y" home.path=/ disk.left-click="dolphin {instance}" traffic.exclude=lo,vmnet1,vmnet8,lxcbr0,docker0,vboxnet,veth,wlp,wwp,br,macvtap0,vibr0,vibr,vnet0,virbr0,virbr1 nic.exclude=lo,docker,vmnet,lxcbr,wwp0s,vboxnet,veth,br,vnet,br-72a8a860a1ae,vibr0-nic,vibr,vnet0,virbr0,virbr1 -t gruvbox-powerline
+    status_command ~/projects/yvesh/bumblebee-status/bumblebee-status -m spotify nic traffic xrandr cpu sensors memory pasink pasource weather date time battery -p interval=8 github.token=REPLACE_WITH_YOUR_TOKEN time.format="%H:%M" date.format="%a, %b %d %Y" home.path=/ disk.left-click="dolphin {instance}" traffic.exclude=lo,vmnet1,vmnet8,lxcbr0,docker0,vboxnet,veth,wlp,wwp,br,macvtap0,vibr0,vibr,vnet0,virbr0,virbr1 nic.exclude=lo,docker,vmnet,lxcbr,wwp0s,vboxnet,veth,br,vnet,br-72a8a860a1ae,vibr0-nic,vibr,vnet0,virbr0,virbr1 -t gruvbox-powerline
     
     # tray_output primary
     font pango:DejaVu Sans Mono for Powerline 12 
@@ -208,13 +215,15 @@ bar {
    #  position top
 }
 
+# Positioning monitors
+# exec --no-startup-id bash ~/rotate_24.sh
+
 # Compton
 # exec --no-startup-id compton -b --backend glx 
 
-# Set resolution
 # exec --no-startup-id xrandr --output eDP1 --mode 1920x1080
 
-# Set KB
+# XKB
 # exec --no-startup-id setxkbmap de
 
 # No XDMS for dock
@@ -237,10 +246,13 @@ exec --no-startup-id dunst -config ~/.config/i3/config_dunst
 # Dropbox
 # exec --no-startup-id /usr/bin/dropbox start
 
-# Gnome Keyring
+# Rescue time
+# exec --no-startup-id /usr/bin/rescuetime
+
+# Gnome
 # exec --no-startup-id gnome-keyring-daemon --start
 
-# Network Manager applet
+# Network Manager
 # exec --no-startup-id nm-applet --no-agent
 
 # Discord
@@ -248,20 +260,17 @@ exec --no-startup-id dunst -config ~/.config/i3/config_dunst
 
 # Skype
 # exec --no-startup-id skype
-
-# Set dpi
+# Scaling for none dock
 exec --no-startup-id xrandr --dpi 96
 
-# Set background
-exec --no-startup-id feh --bg-fill /mnt/fast/Dropbox/home/Pictures/unsplash/andreas-kind-bUhzlj3gGso.jpg
+exec --no-startup-id feh --bg-fill /mnt/share/Dropbox/home/Pictures/unsplash/andreas-kind-bUhzlj3gGso.jpg
 
 # exec --no-startup-id conky
 # exec --no-startup-id albert
-# exec --no-startup-id compton --config ~/.compton.conf --backend glx --vsync opengl-swc
+exec --no-startup-id compton --config ~/.compton.conf
 
-# Autlock screen
 exec --no-startup-id xss-lock "i3lock-fancy"
 
-# Start pulseaudio
+# Make sure pulseadio is started
 exec --no-startup-id pulseaudio --start
 
