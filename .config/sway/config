@@ -8,7 +8,10 @@
 input * xkb_layout de
 # input "MANUFACTURER1 Keyboard" xkb_model "pc105"
 
-output "*" background $HOME/Downloads/unsplash/anthony-intraversato-vYRAP3yMa3I.jpg fill
+output DP-1 pos 0 0 res 3840x1600
+output DP-2 pos 3840 0 mode 2560x1440@143.912003Hz 
+
+output "*" background $HOME/Downloads/unsplash/akio_bako_anime_sunset_girl_clouds_103086_3840x2160.jpg fill
 
 set $mod Mod4
 
@@ -181,13 +184,13 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Create screenshot with Maim
-bindsym Print exec grim ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
+bindsym Print exec grim -t jpeg ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
 
 # Save screenshot with Maim and selection tool
-bindsym $mod+Print exec grim -g "$(slurp)" ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
+bindsym $mod+Print exec grim -t jpeg -g "$(slurp)" ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
 
 # Lock the system
-bindsym $mod+l exec swaylock
+bindsym $mod+l exec swaylock-fancy
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -274,7 +277,7 @@ exec --no-startup-id xrandr --dpi 96
 # exec --no-startup-id albert
 # exec --no-startup-id compton --config ~/.compton.conf
 
-exec --no-startup-id xss-lock "swaylock"
+exec --no-startup-id xss-lock "swaylock-fancy"
 
 # Make sure pulseadio is started
 exec --no-startup-id pulseaudio --start
