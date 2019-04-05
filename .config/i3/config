@@ -1,5 +1,5 @@
-# i3-gaps config - v2018-03-18
-#  
+# i3-gaps config - v2018-01-28
+# 
 # Maintainer:
 #   Yves Hoppe <info@yveshoppe.de>
 
@@ -29,7 +29,7 @@ workspace 3 gaps inner 0
 # 
 smart_gaps on
 
-# Workspace names (With fontawesome)
+# Workspace names
 # Dashboard
 set $ws1 "1:  "
 # Web
@@ -218,9 +218,6 @@ bar {
 # Positioning monitors
 # exec --no-startup-id bash ~/rotate_24.sh
 
-# Compton
-# exec --no-startup-id compton -b --backend glx 
-
 # exec --no-startup-id xrandr --output eDP1 --mode 1920x1080
 
 # XKB
@@ -267,10 +264,11 @@ exec --no-startup-id feh --bg-fill /mnt/share/Dropbox/home/Pictures/unsplash/and
 
 # exec --no-startup-id conky
 # exec --no-startup-id albert
-exec --no-startup-id compton --config ~/.compton.conf
+# exec --no-startup-id compton --config ~/.compton.conf --backend glx --vsync opengl-swc
 
-exec --no-startup-id xss-lock "i3lock-fancy"
+# Auto-lock screen
+exec --no-startup-id xss-lock i3lock-fancy
 
-# Make sure pulseadio is started
+# Start pulseaudio (if not already started like on Arch)
 exec --no-startup-id pulseaudio --start
 

@@ -1,1 +1,1 @@
-app-emulation/qemu virgl usb
+app-emulation/qemu virgl usb spice numa alsa usbredir
