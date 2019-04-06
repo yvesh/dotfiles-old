@@ -24,6 +24,11 @@ export MAKEFLAGS="-j$(nproc)"
 # Aliases
 alias ls='ls --color'
 
+# QEMU
+export QEMU_AUDIO_DRV=alsa
+export QEMU_ALSA_DAC_BUFFER_SIZE=512
+export QEMU_ALSA_DAC_PERIOD_SIZE=128
+
 ### Added by Zplugin's installer
 source '/home/g0ne/.zplugin/bin/zplugin.zsh'
 autoload -Uz _zplugin

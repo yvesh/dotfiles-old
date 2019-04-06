@@ -10,7 +10,21 @@ or other application using the libvirt API.
   <uuid>c2e12168-4bb9-4953-95b3-a1cbc1b24be1</uuid>
   <memory unit='KiB'>16777216</memory>
   <currentMemory unit='KiB'>16777216</currentMemory>
-  <vcpu placement='static'>8</vcpu>
+  <vcpu placement='static' cpuset='0-3,24-27'>8</vcpu>
+  <cputune>
+    <vcpupin vcpu='0' cpuset='0'/>
+    <vcpupin vcpu='1' cpuset='24'/>
+    <vcpupin vcpu='2' cpuset='1'/>
+    <vcpupin vcpu='3' cpuset='25'/>
+    <vcpupin vcpu='4' cpuset='2'/>
+    <vcpupin vcpu='5' cpuset='26'/>
+    <vcpupin vcpu='6' cpuset='3'/>
+    <vcpupin vcpu='7' cpuset='27'/>
+    <emulatorpin cpuset='0-3,24-27'/>
+  </cputune>
+  <numatune>
+    <memory mode='strict' nodeset='0'/>
+  </numatune>
   <os>
     <type arch='x86_64' machine='pc-i440fx-2.7'>hvm</type>
     <loader readonly='yes' type='pflash'>/usr/share/edk2-ovmf/OVMF_CODE.fd</loader>
@@ -27,9 +41,14 @@ or other application using the libvirt API.
     </hyperv>
     <vmport state='off'/>
   </features>
-  <cpu mode='host-passthrough' check='none'>
+  <cpu mode='host-model' check='partial'>
+    <model fallback='allow'/>
     <topology sockets='1' cores='4' threads='2'/>
-    <feature policy='disable' name='smep'/>
+    <cache level='3' mode='emulate'/>
+    <feature policy='require' name='topoext'/>
+    <numa>
+      <cell id='0' cpus='0-7' memory='16777216' unit='KiB'/>
+    </numa>
   </cpu>
   <clock offset='localtime'>
     <timer name='rtc' tickpolicy='catchup'/>
@@ -122,17 +141,17 @@ or other application using the libvirt API.
     </hostdev>
     <hostdev mode='subsystem' type='usb' managed='yes'>
       <source>
-        <vendor id='0x1532'/>
-        <product id='0x005c'/>
-      </source>
-      <address type='usb' bus='0' port='1'/>
-    </hostdev>
-    <hostdev mode='subsystem' type='usb' managed='yes'>
-      <source>
         <vendor id='0x1e7d'/>
         <product id='0x31ce'/>
       </source>
       <address type='usb' bus='0' port='2'/>
+    </hostdev>
+    <hostdev mode='subsystem' type='usb' managed='yes'>
+      <source>
+        <vendor id='0x1532'/>
+        <product id='0x005c'/>
+      </source>
+      <address type='usb' bus='0' port='1'/>
     </hostdev>
     <redirdev bus='usb' type='spicevmc'>
       <address type='usb' bus='0' port='3'/>
