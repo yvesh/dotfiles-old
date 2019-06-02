@@ -1,9 +1,14 @@
-# Version 2019-02-03
+# Version 2019-06-02
 
 # Extend path with yarn, node, ruby and composer and personal bin
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/bin:$HOME/.config/composer/vendor/bin:$HOME/.bin:$HOME/.gem/ruby/2.5.0/bin:$PATH"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/bin:$HOME/.config/composer/vendor/bin:$HOME/.bin:$HOME/.gem/ruby/2.4.0/bin:$PATH"
 
 export EDITOR=vim
+
+export NUMCPUS=$(nproc)
+export NUMCPUSPLUSONE=$(( NUMCPUS + 1 ))
+export MAKEOPTS="-j$NUMCPUSPLUSONE -l$NUMCPUS"
+export EMERGE_DEFAULT_OPTS="--jobs=$NUMCPUSPLUSONE --load-average=$NUMCPUS"
 
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
     ssh-agent > ~/.ssh-agent-thing
@@ -19,15 +24,17 @@ export XDEBUG_CONFIG="remote_enable=1 remote_mode=req remote_port=9000 remote_ho
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export GDK_SCALE=1
 
-export MAKEFLAGS="-j$(nproc)" 
+# Wayland specific
+# export _JAVA_AWT_WM_NONREPARENTING=1
 
-# Aliases
-alias ls='ls --color'
-
-# QEMU
+# QEMU 
 export QEMU_AUDIO_DRV=alsa
 export QEMU_ALSA_DAC_BUFFER_SIZE=512
 export QEMU_ALSA_DAC_PERIOD_SIZE=128
+
+# Aliases
+alias ls='ls --color'
+alias ssh='TERM=xterm-256color \ssh'
 
 ### Added by Zplugin's installer
 source '/home/g0ne/.zplugin/bin/zplugin.zsh'
