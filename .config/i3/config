@@ -1,4 +1,4 @@
-# i3-gaps config - v2018-01-28
+# i3-gaps config - v2019-09-22
 # 
 # Maintainer:
 #   Yves Hoppe <info@yveshoppe.de>
@@ -79,16 +79,11 @@ bindsym $mod+Return exec alacritty # rxvt-unicode
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start rofi (a program launcher)
+# Start rofi (a program launcher)
 bindsym $mod+d exec rofi -show drun
 bindsym $mod+s exec rofi -show ssh -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85
-bindsym $mod+a exec rofi -show window -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85 
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-# change focus
+# Change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
 # bindsym $mod+l focus up
@@ -174,10 +169,10 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Create screenshot with Maim
-bindsym Print exec maim ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
+bindsym Print exec maim /mnt/fast/nextcloud/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
 
 # Save screenshot with Maim and selection tool
-bindsym $mod+Print exec maim -s ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
+bindsym $mod+Print exec maim -s /mnt/fast/nextcloud/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
 
 # Lock the system
 bindsym $mod+l exec i3lock-fancy
@@ -192,7 +187,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
     # Bumblee status dev
-    status_command ~/projects/yvesh/bumblebee-status/bumblebee-status -m spotify nic traffic xrandr cpu sensors memory pasink pasource weather date time battery -p interval=8 github.token=REPLACE_WITH_YOUR_TOKEN time.format="%H:%M" date.format="%a, %b %d %Y" home.path=/ disk.left-click="dolphin {instance}" traffic.exclude=lo,vmnet1,vmnet8,lxcbr0,docker0,vboxnet,veth,wlp,wwp,br,macvtap0,vibr0,vibr,vnet0,virbr0,virbr1 nic.exclude=lo,docker,vmnet,lxcbr,wwp0s,vboxnet,veth,br,vnet,br-72a8a860a1ae,vibr0-nic,vibr,vnet0,virbr0,virbr1 -t gruvbox-powerline
+    status_command ~/projects/yvesh/bumblebee-status/bumblebee-status -m spotify nic traffic xrandr cpu sensors memory pasink pasource weather date time battery -p interval=8 github.token=REEPLACE_WITH_YOUR_OWN time.format="%H:%M" date.format="%a, %b %d %Y" home.path=/ disk.left-click="thunar {instance}" traffic.exclude=lo,vmnet1,vmnet8,lxcbr0,docker0,vboxnet,veth,wlp,wwp,br,macvtap0,vibr0,vibr,vnet0,virbr0,virbr1 nic.exclude=lo,docker,vmnet,lxcbr,wwp0s,vboxnet,veth,br,vnet,br-72a8a860a1ae,vibr0-nic,vibr,vnet0,virbr0,virbr1 -t gruvbox-powerline
     
     # tray_output primary
     font pango:DejaVu Sans Mono for Powerline 12 
@@ -217,16 +212,20 @@ bar {
 
 # Positioning monitors
 # exec --no-startup-id bash ~/rotate_24.sh
+exec --no-startup-id bash ~/./screenlayout/default.sh
+
+# Compton
+# exec --no-startup-id compton -b --backend glx 
 
 # exec --no-startup-id xrandr --output eDP1 --mode 1920x1080
 
 # XKB
 # exec --no-startup-id setxkbmap de
 
-# No XDMS for dock
+# No XDMS for dock (Don't turn off screens)
 # exec xset -dpms
 
-# Gnome settings daemon (or unit if Ubuntu)
+# Gnome settings daemon (or unity if Ubuntu)
 # exec --no-startup-id /usr/bin/unity-settings-daemon
 # exec --no-startup-id /usr/libexec/gnome-settings-daemon
 # exec --no-startup-id gnome-shell
@@ -243,10 +242,7 @@ exec --no-startup-id dunst -config ~/.config/i3/config_dunst
 # Dropbox
 # exec --no-startup-id /usr/bin/dropbox start
 
-# Rescue time
-# exec --no-startup-id /usr/bin/rescuetime
-
-# Gnome
+# Gnome Keyring
 # exec --no-startup-id gnome-keyring-daemon --start
 
 # Network Manager
@@ -257,18 +253,18 @@ exec --no-startup-id dunst -config ~/.config/i3/config_dunst
 
 # Skype
 # exec --no-startup-id skype
-# Scaling for none dock
+
+# Scaling for none dock-mode
 exec --no-startup-id xrandr --dpi 96
 
-exec --no-startup-id feh --bg-fill /mnt/share/Dropbox/home/Pictures/unsplash/andreas-kind-bUhzlj3gGso.jpg
+# Set background
+exec --no-startup-id feh --bg-fill /mnt/fast/nextcloud/home/wallpaper/simonstalenhag/by_burned_2560.jpg
 
 # exec --no-startup-id conky
 # exec --no-startup-id albert
-# exec --no-startup-id compton --config ~/.compton.conf --backend glx --vsync opengl-swc
 
-# Auto-lock screen
 exec --no-startup-id xss-lock i3lock-fancy
 
-# Start pulseaudio (if not already started like on Arch)
+# Make sure pulseaudio is started
 exec --no-startup-id pulseaudio --start
 

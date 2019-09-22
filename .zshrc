@@ -1,13 +1,16 @@
-# Version 2019-06-02
+# Version 2019-09-22
 
-# Extend path with yarn, node, ruby and composer and personal bin
+# Extend PATH with yarn, node, ruby and composer and personal bin
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/bin:$HOME/.config/composer/vendor/bin:$HOME/.bin:$HOME/.gem/ruby/2.4.0/bin:$PATH"
 
 export EDITOR=vim
 
+# Compiler options
 export NUMCPUS=$(nproc)
 export NUMCPUSPLUSONE=$(( NUMCPUS + 1 ))
 export MAKEOPTS="-j$NUMCPUSPLUSONE -l$NUMCPUS"
+
+# Gentoo specific
 export EMERGE_DEFAULT_OPTS="--jobs=$NUMCPUSPLUSONE --load-average=$NUMCPUS"
 
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
@@ -17,7 +20,7 @@ if [[ "$SSH_AGENT_PID" == "" ]]; then
     eval "$(<~/.ssh-agent-thing)"
 fi
 
-# Xdebug remote
+# Xdebug (PHP) remote
 export XDEBUG_CONFIG="remote_enable=1 remote_mode=req remote_port=9000 remote_host=127.0.0.1"
 
 # Scaling
@@ -37,7 +40,7 @@ alias ls='ls --color'
 alias ssh='TERM=xterm-256color \ssh'
 
 ### Added by Zplugin's installer
-source '/home/g0ne/.zplugin/bin/zplugin.zsh'
+source "~/.zplugin/bin/zplugin.zsh"
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 ### End of Zplugin's installer chunk
@@ -53,8 +56,6 @@ zplugin light zdharma/fast-syntax-highlighting
 
 zplugin light zsh-users/zsh-history-substring-search
 zplugin light trapd00r/zsh-syntax-highlighting-filetypes
-
-# zplugin ice pick"async.zsh" src"pure.zsh"; zplugin light sindresorhus/pure
 
 # OMZ libraries
 local _ZSHRC_OMZ_LIBS=(
