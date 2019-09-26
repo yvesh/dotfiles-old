@@ -1,4 +1,4 @@
-# sway - v2019-03-18
+# sway - v2019-09-22
 #  
 # Maintainer:
 #   Yves Hoppe <info@yveshoppe.de>
@@ -8,10 +8,11 @@
 input * xkb_layout de
 # input "MANUFACTURER1 Keyboard" xkb_model "pc105"
 
-output DP-1 pos 0 0 res 3840x1600
-output DP-2 pos 3840 0 mode 2560x1440@143.912003Hz 
+output DP-1 pos 0 0 res 5120x1440@69.97Hz
+output DP-2 pos 5120 -800 mode 2560x1440@143.912003Hz 
+output DP-2 transform 90
 
-output "*" background $HOME/Downloads/unsplash/akio_bako_anime_sunset_girl_clouds_103086_3840x2160.jpg fill
+output "*" background /mnt/fast/nextcloud/home/wallpaper/simonstalenhag/by_burned_2560.jpg fill
 
 set $mod Mod4
 
@@ -281,4 +282,10 @@ exec --no-startup-id xss-lock "swaylock-fancy"
 
 # Make sure pulseadio is started
 exec --no-startup-id pulseaudio --start
+
+exec --no-startup-id wmname LG3D
+
+exec --no-startup-id  swayidle timeout 600 'swaymsg "output * dpms off"' \
+       resume 'swaymsg "output * dpms on"' \
+       before-sleep 'swaylock -c 000000'
 
