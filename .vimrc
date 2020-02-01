@@ -4,8 +4,13 @@
 " 	info@yveshoppe.de
 "
 " Version:
-" 	2.0.2 - 2019-09-22
-" 	
+"	2.0.2 - 2020/02/01
+" 
+" Using dein as plugin manager.
+" https://github.com/Shougo/dein.vim
+"
+" Use :call dein#install()
+"
 """""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""
@@ -66,7 +71,7 @@ set nobackup
 set nowb
 set noswapfile
 
-" Tab instead of spaces
+" Spaces instead of tabs
 set expandtab
 set smarttab
 
