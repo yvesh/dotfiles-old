@@ -1,4 +1,10 @@
-# sway - v2019-09-22
+# Sway - v2020-06-25
+# Ported from i3-gaps
+#
+# * Uses Wofi as menu launcher
+# * swaylock-fancy for screen locking
+# * alacritty as default term
+# * grim (with slurp) for screenshots
 #  
 # Maintainer:
 #   Yves Hoppe <info@yveshoppe.de>
@@ -8,11 +14,15 @@
 input * xkb_layout de
 # input "MANUFACTURER1 Keyboard" xkb_model "pc105"
 
-output DP-1 pos 0 0 res 5120x1440@69.97Hz
-output DP-2 pos 5120 -800 mode 2560x1440@143.912003Hz 
-output DP-2 transform 90
+# output HDMI-A-1 pos 0 0 res 5120x1440@69.973000Hz
+# output DP-2 transform 90 pos 5120 0 mode 2560x1440@143.912003Hz 
+output DP-1 pos 0 0 res 2560x1440@143.972000Hz
+output DP-2 pos 2560 0 res 2560x1440@143.972000Hz
+output DP-3 transform 90 pos 5120 0 mode 2560x1440@143.912003Hz
 
-output "*" background /mnt/fast/nextcloud/home/wallpaper/simonstalenhag/by_burned_2560.jpg fill
+# focus output DP-1
+
+output "*" background /mnt/ultrafast/nextcloud/home/wallpaper/2020/purple-space-abstract.jpg fill
 
 set $mod Mod4
 
@@ -21,7 +31,7 @@ set $mod Mod4
 font pango:monospace 0 
 
 # we use comptone highlighting instead
-new_window pixel 0 
+default_border none
 
 # class                 border  backgr. text    indicator
 # client.focused          #ff8c1a #ff8c1a #ffffff #ff8c1a
@@ -31,34 +41,40 @@ new_window pixel 0
 hide_edge_borders both
 
 # Gaps
-gaps inner 8
+gaps inner 2
 gaps outer 0 
 
 # No gaps on workspace 3
-workspace 3 gaps inner 0
+# workspace 3 gaps inner 0
 
-# 
+
 smart_gaps on
 
 # Workspace names (With fontawesome)
 # Dashboard
+set $ws0 "0:0 "
 set $ws1 "1:  "
 # Web
 set $ws2 "2:  "
 # Dev
-set $ws3 "3:  "
+set $ws3 "3:  "
 # SQL
-set $ws4 "4:  "
+set $ws4 "4: "
 # Mail
-set $ws5 "5:  "
+set $ws5 "5: "
 # vmware
-set $ws6 "6: "
+set $ws6 "6:  "
 # spotify
 set $ws7 "7:  "
 # vlc
 set $ws8 "8:  "
 # Trash
 set $ws9 "9:  "
+
+# Some extra space
+set $cws1 "s1: "
+set $cws2 "s2: "
+set $cws3 "s3: "
 
 # rename workspace 1 to $ws1
 # rename workspace 2 to $ws2
@@ -90,14 +106,10 @@ bindsym $mod+Return exec alacritty # rxvt-unicode / urxvt
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start rofi (a program launcher)
-bindsym $mod+d exec rofi -show drun
-bindsym $mod+s exec rofi -show ssh -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85
-bindsym $mod+a exec rofi -show window -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85 
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+# start wofi (a program launcher like rofi for starting programs)
+bindsym $mod+d exec wofi --show drun
+# bindsym $mod+s exec rofi -show ssh -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85
+# bindsym $mod+a exec rofi -show window -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85 
 
 # change focus
 bindsym $mod+j focus left
@@ -159,7 +171,10 @@ bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace 0
+bindsym $mod+0 workspace $ws0
+bindsym $mod+Ctrl+1 workspace $cws1
+bindsym $mod+Ctrl+2 workspace $cws2
+bindsym $mod+Ctrl+3 workspace $cws3
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -171,24 +186,24 @@ bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace 0
+bindsym $mod+Shift+0 move container to workspace $ws0
+bindsym $mod+Shift+Ctrl+1 move container to workspace  $cws1
+bindsym $mod+Shift+Ctrl+2 move container to workspace  $cws2
+bindsym $mod+Shift+Ctrl+3 move container to workspace  $cws3
 
-assign [class="Chrome"] 2 www
-
-# reload the configuration file
 bindsym $mod+Shift+c reload
 
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+# restart sway inplace (preserves your layout/session, can be used to upgrade sway)
 bindsym $mod+Shift+r restart
 
-# exit i3 (logs you out of your X session)
+# Exit sway (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# Create screenshot with Maim
-bindsym Print exec grim -t jpeg ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
+# Create screenshot with Grim
+bindsym Print exec grim /mnt/ultrafast/nextcloud/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png
 
-# Save screenshot with Maim and selection tool
-bindsym $mod+Print exec grim -t jpeg -g "$(slurp)" ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
+# Save screenshot with Sway and selection tool
+bindsym $mod+Print exec grim -g "$(slurp)" /mnt/ultrafast/nextcloud/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png
 
 # Lock the system
 bindsym $mod+l exec swaylock-fancy
@@ -229,24 +244,10 @@ bar {
 # Positioning monitors
 # exec --no-startup-id bash ~/rotate_24.sh
 
-# Compton
-# exec --no-startup-id compton -b --backend glx 
-
-# exec --no-startup-id xrandr --output eDP1 --mode 1920x1080
-
-# XKB
-# exec --no-startup-id setxkbmap de
-
-# No XDMS for dock
-# exec xset -dpms
-
 # Gnome settings daemon (or unit if Ubuntu)
-# exec --no-startup-id /usr/bin/unity-settings-daemon
-# exec --no-startup-id /usr/libexec/gnome-settings-daemon
-# exec --no-startup-id gnome-shell
-
-# clipit
 # exec --no-startup-id clipit -d
+
+exec --no-startup-id copyq
 
 # Notifications
 exec --no-startup-id dunst -config ~/.config/i3/config_dunst
@@ -257,28 +258,16 @@ exec --no-startup-id dunst -config ~/.config/i3/config_dunst
 # Dropbox
 # exec --no-startup-id /usr/bin/dropbox start
 
-# Rescue time
-# exec --no-startup-id /usr/bin/rescuetime
-
 # Gnome
 # exec --no-startup-id gnome-keyring-daemon --start
 
 # Network Manager
 # exec --no-startup-id nm-applet --no-agent
 
-# Discord
-# exec --no-startup-id discord-canary
-
-# Skype
-# exec --no-startup-id skype
-# Scaling for none dock
-exec --no-startup-id xrandr --dpi 96
-
 # exec --no-startup-id conky
 # exec --no-startup-id albert
-# exec --no-startup-id compton --config ~/.compton.conf
 
-exec --no-startup-id xss-lock "swaylock-fancy"
+# exec --no-startup-id xss-lock "swaylock-fancy"
 
 # Make sure pulseadio is started
 exec --no-startup-id pulseaudio --start
