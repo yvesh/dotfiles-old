@@ -3,7 +3,7 @@
 ### Apps, Launcher & Co.
 # Terminal emulator
 super + Return
-	urxvt
+    alacritty
 
 # Program launcher (dmenu and rofi)
 super + @space
