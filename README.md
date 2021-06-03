@@ -1,8 +1,8 @@
-## Dot-files 
+> Check [yvesh/dotfiles](https://github.com/yvesh/dotfiles) for the current ones.
+
+## Old linux dot files 
 
 My Linux dot files.. 
-
-Most files can be found in the .config directory.
 
 ## Shells and terminals
 
